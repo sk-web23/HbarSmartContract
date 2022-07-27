@@ -73,6 +73,7 @@ contract DomainWeb23 is HederaTokenService {
     //Return ownerAddress with status
     function mintNonFungibleToken(bytes32 _hash,bytes[] memory _metadata) external onlyOwner returns(bool,int64,address)  {
         require(bytes(hashToDomainInfo[_hash].domainName).length>0,"Domain Entry Unavailable");
+        require(nameToDomainInfo[hashToDomainInfo[_hash].domainName].serialNumber==0,"Already Minted");
         uint64 _amount=0;
         string memory domName=hashToDomainInfo[_hash].domainName;
         uint256 ii=indexOf(domName,".");
