@@ -33,7 +33,7 @@ contract DomainWeb23 is HederaTokenService {
 
     constructor(address _tokenAddress) {
         tokenAddress = _tokenAddress;
-        owner= payable(msg.sender);
+        owner= payable(msg.sender); 
         isBtldEnabled["hbar"]=true;
         btldToTokenAddress["hbar"]=tokenAddress;
         
@@ -62,7 +62,7 @@ contract DomainWeb23 is HederaTokenService {
     /// @param delim the delimeter from where the substring will start 
     /// @return SubString The Substring returned from String, str , starting from startIndex.
     function indexOf(string memory str,string memory delim)private pure returns (uint256) {
-    bytes memory strBytes = bytes(str);
+    bytes memory strBytes = bytes(str); // why memory has been used here? Why can't we use only bytes.
     for(uint i = 0; i < strBytes.length; i++) {
         if(strBytes[i]==bytes(delim)[0]){
             return i;
